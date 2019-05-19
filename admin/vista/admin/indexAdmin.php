@@ -13,7 +13,27 @@
 	</head>
 	<body>
 		<header>
-			<h2>Gestion de Usuarios</h2>
+            <?php 
+                include '../../../config/conexionBD.php';
+                $codigo = $_GET['codigo'];
+                $datos = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
+                $result = $conn->query($datos);
+                $u = $result->fetch_assoc();
+                $nombres = $u["usu_nombres"];
+                $apellidos = $u["usu_apellidos"];
+                $foto = $u["usu_imagen"];
+            ?>
+            <div style="float: left; width: 60%">
+                <a href="indexAdmin.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; width: 30%;background-color: rgb(209, 209, 226);">Gestion de Usuarios</h2></a>
+                <a href="correo.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; margin-left: 100px; width: 20%;background-color: rgb(209, 209, 226)">Correos</h2></a>
+            </div>
+            
+            <div style="float:left; margin-right: 30px; width: 30%" >
+                <img width="30%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+                <h2><?php echo "$nombres" ?>
+                <h2><?php echo "$apellidos" ?></h2>
+            </div>
+            
         </header>	
         <table style="width:100%">
             <tr>
@@ -30,11 +50,12 @@
             </tr>
 
             <?php   
-                include '../../../config/conexionBD.php';
+                
                 $sql = "SELECT * FROM usuario";
                 $result = $conn->query($sql);
 
             if ($result->num_rows > 0){    
+                
                 while ($row = $result->fetch_assoc()){
                     if ($row["usu_eliminado"] === 'N'){    
                         echo "<tr>";

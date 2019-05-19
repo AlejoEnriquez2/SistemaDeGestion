@@ -27,7 +27,7 @@
 
 			if ($admin == 1234){
 				echo "<h2>Bienvenido Admin</h2>";
-				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 1, null)";	
+				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 1, '$nombre_imagen')";	
 			}else{
 				echo "Codigo Admin incorrecto";
 				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 0, '$nombre_imagen')";

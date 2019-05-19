@@ -14,7 +14,7 @@
 		 $admin = $u["usu_admin"];
 		 $codigo = $u["usu_codigo"];
 		 if($admin == 1){
-			header("Location: ../../admin/vista/admin/indexAdmin.php");
+			header("Location: ../../admin/vista/admin/indexAdmin.php?codigo=".$codigo);
 		 }else{
 			header("Location: ../../admin/vista/usuario/indexUsuario.php?codigo=".$codigo);
 		 }
