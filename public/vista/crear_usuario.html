@@ -19,7 +19,7 @@
 		<header class="titulo">
 			<h2>Nuevos Usuarios</h2>
 		</header>
-			<form method="POST" onsubmit="return validar()" action="../controladores/crear_usuario.php">
+			<form method="POST" onsubmit="return validar()" action="../controladores/crear_usuario.php" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<td><label for="cedula">Cedula</label></td>
@@ -57,9 +57,12 @@
 						<td><label for="admin">Código Admin</label></td>
 						<td><input type="text" name="admin" placeholder="(Opcional)"></td>
 					</tr>
-					
+					<tr>
+						<td><label for="imagen">Agregar Imagen</label></td>
+						<td><input type="file" name="imagen" multiple></td>
+					</tr>
 					<tr colspan="2">
-						<td><input type="submit"  name="crear" value="Aceptar" onclick="admin()"></td>
+						<td><input type="submit"  name="crear" value="Aceptar"></td>
 					</tr>
 				</table>	
 			</form>

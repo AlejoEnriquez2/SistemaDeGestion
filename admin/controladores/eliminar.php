@@ -12,13 +12,18 @@
     </head>
     <body>
         <?php
-            include '../../../config/conexionBD.php';
+            include '../../config/conexionBD.php';
             //UPDATE `usuario` SET `usu_eliminado` = 'Y', `usu_fecha_modificacion` = NULL WHERE `usuario`.`usu_codigo` = 6;
             date_default_timezone_set("America/Guayaquil");
             $fecha = date('Y-m-d H:i:s', time());
             $codigo = $_GET['codigo'];
-            $sql = "UPDATE usuario SET usu_eliminado = 'Y', usu_fecha_modificacion=$fecha WHERE usuario.usu_codigo = '$codigo'";
+            $sql = "UPDATE usuario SET usu_eliminado = 'Y', usu_fecha_modificacion='$fecha' WHERE usu_codigo = '$codigo'";
             $result = $conn->query($sql);
+            if($result){
+                echo "Eliminado Correctamente";
+            }else {
+                echo "Error!";
+            }
         ?>
     </body>
 </html>

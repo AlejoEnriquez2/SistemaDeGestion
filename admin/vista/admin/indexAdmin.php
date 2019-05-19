@@ -45,9 +45,9 @@
                         echo " <td>".$row["usu_telefono"]."</td>";
                         echo " <td>".$row["usu_correo"]."</td>";
                         echo " <td>".$row["usu_fecha_nacimiento"]."</td>";
-                        echo " <td><a href='eliminar.php?codigo=".$row["usu_codigo"]."'>Eliminar</a></td>";
-                        echo " <td><a href='editar.php?codigo=".$row["usu_codigo"]."'>Editar</a></td>";
-                        echo " <td><a href='password.php?codigo=".$row["usu_codigo"]."'>Actualizar Contrasena</a></td>";
+                        echo " <td><a href='../../controladores/eliminar.php?codigo=".$row["usu_codigo"]."'>Eliminar</a></td>";
+                        echo " <td><a href='../../controladores/editar.php?codigo=".$row["usu_codigo"]."'>Editar</a></td>";
+                        echo " <td><a href='../../controladores/password.php?codigo=".$row["usu_codigo"]."'>Actualizar Contrasena</a></td>";
                         echo "</tr>";
                     }    
                 }

@@ -12,7 +12,7 @@
     </head>
     <body>
         <?php 
-            include '../../../config/conexionBD.php';
+            include '../../config/conexionBD.php';
             $codigo = $_GET['codigo'];
             $sql = "SELECT usu_password FROM USUARIO WHERE usu_codigo = '$codigo'";
             $result = $conn->query($sql);
@@ -20,7 +20,7 @@
             $contrasena = $u["usu_password"];
         ?>
         
-        <form action='../../controladores/contrasena.php' method='POST'>
+        <form action='contrasena.php' method='POST'>
             <input type="hidden" name='codigo' value = '<?php echo "$codigo" ?>'>
             
             <label for='comprobar'><h3>Contraseña Antigua</h3></label>

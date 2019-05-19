@@ -12,13 +12,15 @@
 		 $_SESSION['isLogged'] = TRUE;
 		 $u = $result->fetch_assoc();
 		 $admin = $u["usu_admin"];
+		 $codigo = $u["usu_codigo"];
 		 if($admin == 1){
-			header("Location: ../../admin/vista/admin/index.php");
+			header("Location: ../../admin/vista/admin/indexAdmin.php");
 		 }else{
-			header("Location: ../../admin/vista/usuario/index.php");
+			header("Location: ../../admin/vista/usuario/indexUsuario.php?codigo=".$codigo);
 		 }
  		
  	} else {
+		 echo "Error";
  		header("Location: ../vista/login.html");
  	}
  	$conn->close();

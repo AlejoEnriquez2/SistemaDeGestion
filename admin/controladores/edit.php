@@ -16,6 +16,6 @@
     usu_direccion = '$direccion', usu_telefono = '$telefono', usu_fecha_nacimiento = '$nacimiento', 
     usu_fecha_modificacion = '$fecha' WHERE usuario.usu_codigo = '$codigo'";
     $result = $conn->query($sql);
-    header("location: ../vista/usuario/index.php");
+    //header("location: ../vista/usuario/index.php");
     echo "Usuario Modificado";
 ?>

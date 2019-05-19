@@ -15,7 +15,7 @@
     if($a1 == $a2){
         $sql = "UPDATE usuario SET usu_password='$contrasena', usu_fecha_modificacion = '$fecha' WHERE usu_codigo = '$codigo'";
         $result = $conn->query($sql);
-        header("location: ../vista/usuario/index.php");
+        //header("location: ../vista/usuario/index.php");
     }else{
         echo "contraseña incorrecta";
     }

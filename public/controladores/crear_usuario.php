@@ -17,13 +17,20 @@
     		$nacimiento = isset($_POST["nacimiento"]) ? trim($_POST["nacimiento"]): null;
 			$contrasena = isset($_POST["contrasena"]) ? trim($_POST['contrasena']): null;
 			$admin = isset($_POST["admin"]) ? trim($_POST["admin"]): null;
+			$nombre_imagen = $_FILES['imagen']['name'];		//Nombre de la imagen
+			$tipo_imagen = $_FILES['imagen']['type'];		//Tipo de imagen
+			$tamano_imagen = $_FILES['imagen']['size'];		//Tamaño
+			$ruta_imagen = $_FILES['imagen']['tmp_name'];		//Ruta
+
+			$carpeta_destino = "../../admin/images/".$nombre_imagen;
+			copy($ruta_imagen, $carpeta_destino);
 
 			if ($admin == 1234){
 				echo "<h2>Bienvenido Admin</h2>";
-				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 1)";
+				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 1, null)";	
 			}else{
 				echo "Codigo Admin incorrecto";
-				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 0)";
+				$sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', md5('$contrasena'), '$nacimiento', 'N', null, null, 0, '$nombre_imagen')";
 			}
 			
 

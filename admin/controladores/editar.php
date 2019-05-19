@@ -13,7 +13,7 @@
     </head>
     <body>
         <?php
-            include '../../../config/conexionBD.php';
+            include '../../config/conexionBD.php';
             //UPDATE `usuario` SET `usu_eliminado` = 'Y', `usu_fecha_modificacion` = NULL WHERE `usuario`.`usu_codigo` = 6;
             $codigo = $_GET['codigo'];
             $sql = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
@@ -26,7 +26,7 @@
             $telefono = $u["usu_telefono"];
             $nacimiento = $u["usu_fecha_nacimiento"];
         ?>
-                    <form action='../../controladores/edit.php?' method='POST'>
+                    <form action='edit.php?' method='POST'>
                         <input type = 'hidden' name = 'codigo' value='<?php echo "$codigo" ?>'>
 
                         <label for='cedula'><h3>Cedula</h3></label>
