@@ -26,7 +26,7 @@
             $telefono = $u["usu_telefono"];
             $nacimiento = $u["usu_fecha_nacimiento"];
         ?>
-                    <form action='edit.php?' method='POST'>
+                    <form action='edit.php?' method='POST' enctype="multipart/form-data">
                         <input type = 'hidden' name = 'codigo' value='<?php echo "$codigo" ?>'>
 
                         <label for='cedula'><h3>Cedula</h3></label>
@@ -45,8 +45,11 @@
                         <input type='text' name='telefono' value='<?php echo "$telefono" ?>' required>
 
                         <label for='nacimiento'><h3>Nacimiento</h3></label>
-                        <input type='date' name='nacimiento' value='<?php echo "$nacimiento" ?>' required>
+                        <input type='date' name='nacimiento' value='<?php echo "$nacimiento" ?>' required><br><br>
 
+						<label for="imagen">Agregar Imagen</label>
+						<input type="file" name="imagen" multiple>
+				
                         <input type='submit' name='crear' value='Aceptar'>
                     </form>            
             <!--//$sql = "UPDATE usuario SET usu_eliminado = 'Y' WHERE usuario.usu_codigo = '$codigo'";

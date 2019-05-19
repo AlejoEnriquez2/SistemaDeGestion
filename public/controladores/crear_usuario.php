@@ -15,12 +15,12 @@
     		$telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : null;
     		$correo = isset($_POST["email"]) ? trim($_POST["email"]): null;
     		$nacimiento = isset($_POST["nacimiento"]) ? trim($_POST["nacimiento"]): null;
-			$contrasena = isset($_POST["contrasena"]) ? trim($_POST['contrasena']): null;
-			$admin = isset($_POST["admin"]) ? trim($_POST["admin"]): null;
-			$nombre_imagen = $_FILES['imagen']['name'];		//Nombre de la imagen
-			$tipo_imagen = $_FILES['imagen']['type'];		//Tipo de imagen
-			$tamano_imagen = $_FILES['imagen']['size'];		//Tamaño
-			$ruta_imagen = $_FILES['imagen']['tmp_name'];		//Ruta
+				$contrasena = isset($_POST["contrasena"]) ? trim($_POST['contrasena']): null;
+				$admin = isset($_POST["admin"]) ? trim($_POST["admin"]): null;
+				$nombre_imagen = $_FILES['imagen']['name'];		//Nombre de la imagen
+				$tipo_imagen = $_FILES['imagen']['type'];		//Tipo de imagen
+				$tamano_imagen = $_FILES['imagen']['size'];		//Tamaño
+				$ruta_imagen = $_FILES['imagen']['tmp_name'];		//Ruta
 
 			$carpeta_destino = "../../admin/images/".$nombre_imagen;
 			copy($ruta_imagen, $carpeta_destino);
