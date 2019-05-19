@@ -23,15 +23,21 @@
                 $apellidos = $u["usu_apellidos"];
                 $foto = $u["usu_imagen"];
             ?>
-            <div style="float: left; width: 60%">
-                <a href="indexAdmin.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; width: 30%;background-color: rgb(209, 209, 226);">Gestion de Usuarios</h2></a>
-                <a href="correo.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; margin-left: 100px; width: 20%;background-color: rgb(209, 209, 226)">Correos</h2></a>
+            <div style="float: left; width: 50%">
+                <a href="indexAdmin.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; width: 50%;background-color: rgb(209, 209, 226);">Gestion de Usuarios</h2></a>
+                <a href="correo.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; margin-left: 50px; width: 20%;background-color: rgb(209, 209, 226)">Correos</h2></a>
             </div>
-            
-            <div style="float:left; margin-right: 30px; width: 30%" >
-                <img width="30%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
-                <h2><?php echo "$nombres" ?>
-                <h2><?php echo "$apellidos" ?></h2>
+
+            <div style="float:left; margin-right: 10px; width: 20%" >
+                <img width="50%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+                <h4><?php echo "$nombres" ?></h4>
+                <h4><?php echo "$apellidos" ?></h4>
+            </div>
+
+            <div style="float:left; margin-left: 10px; width: 15%; margin-top: 30px">
+                <td><a href='../../controladores/eliminar.php?codigo=<?php echo "$codigo" ?>'>Eliminar</a></td><br>
+                <td><a href='../../controladores/editar.php?codigo=<?php echo "$codigo" ?>'>Editar</a></td><br>
+                <td><a href='../../controladores/password.php?codigo=<?php echo "$codigo" ?>'>Actualizar Contrasena</a></td><br>
             </div>
             
         </header>	

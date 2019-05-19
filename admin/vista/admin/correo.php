@@ -25,10 +25,10 @@
             ?>
             <div style="float: left; width: 60%">
                 <a href="indexAdmin.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; width: 30%;background-color: rgb(209, 209, 226);">Gestion de Usuarios</h2></a>
-                <a href="correo.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; margin-left: 100px; width: 20%;background-color: rgb(209, 209, 226)">Correos</h2></a>
+                <a href="correo.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; margin-left: 20px; width: 20%;background-color: rgb(209, 209, 226)">Correos</h2></a>
             </div>
             
-            <div style="float:left; margin-right: 30px; width: 30%" >
+            <div style="float:left; margin-right: 60px; width: 30%" >
                 <img width="30%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
                 <h2><?php echo "$nombres" ?>
                 <h2><?php echo "$apellidos" ?></h2>
