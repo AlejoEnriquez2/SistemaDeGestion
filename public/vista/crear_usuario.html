@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sistema de Gestión de Personas</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../vista/style.css" type="text/css">
+		<script type="text/javascript" src="validacion.js"></script>
+		<style type="text/css">
+			.error {
+				color: red;
+				font-size: 8px;
+			}
+			input {
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="titulo">
+			<h2>Nuevos Usuarios</h2>
+		</header>
+			<form method="POST" onsubmit="return validar()" action="../controladores/crear_usuario.php">
+				<table>
+					<tr>
+						<td><label for="cedula">Cedula</label></td>
+						<td><input type="text" name="cedula"></td>
+					</tr>
+					<tr>
+						<td><label for="nombre"> Nombres </label></td>
+						<td><input type="text" name="nombres" placeholder="dos nombres" onkeyup="return validacionLetras(this)"></td>
+					</tr>
+					<tr>
+						<td><label for="apellido"> Apellidos </label></td>
+						<td><input type="text" name="apellidos" placeholder="dos apellidos"></td>
+					</tr>	
+					<tr>
+						<td><label for="direccion"> Dirección </label></td>
+						<td><input type="text" name="direccion"></td>
+					</tr>
+					<tr>
+						<td><label for="telefono"> Telefono </label></td>
+						<td><input type="text" name="telefono"></td>
+					</tr>		
+					<tr>
+						<td><label for="nacimiento"> Nacimiento </label></td>
+						<td><input type="date" name="nacimiento"></td>
+					</tr>
+					<tr>
+						<td><label for="email"> Email </label></td>
+						<td><input type="email" name="email"></td>
+					</tr>
+					<tr>
+						<td><label for="contrasena"> Contraseña </label></td>
+						<td><input type="password" name="contrasena"></td>
+					</tr>
+					<tr>
+						<td><label for="admin">Código Admin</label></td>
+						<td><input type="text" name="admin" placeholder="(Opcional)"></td>
+					</tr>
+					
+					<tr colspan="2">
+						<td><input type="submit"  name="crear" value="Aceptar" onclick="admin()"></td>
+					</tr>
+				</table>	
+			</form>
+			<br>
+			<br>
+			<a href="login.html">Tengo una Cuenta</a>
+		<footer class="pie">
+			
+		</footer>
+	</body>
+</html>

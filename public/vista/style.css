@@ -1,0 +1,34 @@
+header {
+    text-align: center;
+}
+
+.error {
+    color: red;
+}
+
+.columna1 {
+    float: left;
+    width: 20%;
+    margin: 20px;
+    
+}
+
+.columna2 {
+    float: left;
+    width: 60%;
+    margin: 20px;
+    margin-left:25%;
+}
+
+.pie {
+    clear: both;
+    text-align: center;
+}
+
+.centrar {
+    align-content: center;
+    display: block;
+    border: solid black;
+    margin-right: 10%;
+    margin-left: 10%;
+}
