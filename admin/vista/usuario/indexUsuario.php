@@ -62,7 +62,7 @@
                     echo " <td colspan='7'> No existen usuarios</td>";
                     echo "</tr>";
                 }        
-                    $conn->close();
+                    $conn->close(); 
             ?>
         </table>
         
