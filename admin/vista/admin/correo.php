@@ -28,23 +28,18 @@
                 $foto = $u["usu_imagen"];
 
             ?>
-            <div class="col1">
+             <div class="col1">
                 <a href="indexAdmin.php"><h2>Gestion de Usuarios</h2></a>
                 <a href="correo.php"><h2>Correos</h2></a>
             </div>
 
             <div class="col2">
                 <img width="50%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+            </div>
+            <div class="col3">
                 <h4><?php echo "$nombres" ?></h4>
                 <h4><?php echo "$apellidos" ?></h4>
             </div>
-
-            <div class="col3">
-                <td><a href='../../controladores/eliminar.php'>Eliminar</a></td><br>
-                <td><a href='../../controladores/editar.php'>Editar</a></td><br>
-                <td><a href='../../controladores/password.php'>Actualizar Contrasena</a></td><br>
-            </div>
-            
         </header>
         <table class="tabla">
             <tr>
@@ -54,9 +49,10 @@
                 <th>Asunto</th>
                 <th>Abrir</th>
                 <th>Eliminar</th>
+                
             </tr>
             <?php
-            $correo = "SELECT * FROM correo ";
+            $correo = "SELECT * FROM correo WHERE cor_eliminado like'N'";
             $w = $conn->query($correo);
             
             if ($w->num_rows > 0){
@@ -77,6 +73,15 @@
             }
             $conn->close();
             ?>
-
+        </table>
+        <br>
+        <br>
+        <input type="text" id="remitente" value="">
+        <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorRemitente()">
+        <br>
+        <br>
+        <div id="informacion"><b>Correos</b></div>
+        <br>
+        <br>
     </body>
 </html>
