@@ -32,6 +32,7 @@
              <div class="col1">
                 <a href="indexUsuario.php"><h2>Gestion de Usuarios</h2></a>
                 <a href="correo2.php"><h2>Correos</h2></a>
+                <a href="enviarCorreo.php"><h2>Enviar Correo</h2></a>
                 
             </div>
 
@@ -79,11 +80,11 @@
         <br>
         <br>
         <input type="text" id="remitente" value="<?php echo "$correo"?>" placeholder="Remitente" hidden>
-        <input type="button" id="buscar" name="buscar" value="Buscar Remitente" onclick="buscarPorRemitente()">
+        <input type="button" id="buscar" name="buscar" value="Enviados" onclick="buscarPorRemitente()">
         <br>
         <br>
         <input type="text" id="destinatario" value="<?php echo "$correo"?>" placeholder="Destinatario" hidden>
-        <input type="button" id="buscar" name="buscar" value="Buscar Destinatario" onclick="buscarPorDestinatario()">
+        <input type="button" id="buscar" name="buscar" value="Recibidos" onclick="buscarPorDestinatario()">
         <br>
         <br>
         <div id="informacion"><b>Correos</b></div>

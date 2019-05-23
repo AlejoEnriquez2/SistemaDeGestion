@@ -1,7 +1,13 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['isLogged'])|| $_SESSION['isLogged'] === FALSE){
+        header("Location: /SistemaDeGestion/public/vista/login.html");
+    }
+?>
 <?php
     include '../../config/conexionBD.php';
     //UPDATE `usuario` SET `usu_eliminado` = 'Y', `usu_fecha_modificacion` = NULL WHERE `usuario`.`usu_codigo` = 6;
-    $codigo = $_POST['codigo'];
+    $codigo = $_SESSION['codigo'];
     $cedula = isset($_POST["cedula"]) ? mb_strtoupper(trim($_POST["cedula"]), 'utf-8'): null;
     $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'utf-8') : null;
     $apellidos = isset($_POST["apellidos"]) ? mb_strtoupper(trim($_POST["apellidos"]), 'utf-8'): null;
@@ -24,6 +30,6 @@
     usu_direccion = '$direccion', usu_telefono = '$telefono', usu_fecha_nacimiento = '$nacimiento', 
     usu_fecha_modificacion = '$fecha', usu_imagen = '$nombre_imagen' WHERE usuario.usu_codigo = '$codigo'";
     $result = $conn->query($sql);
-    //header("location: ../vista/usuario/index.php");
+    header("location: ../vista/usuario/indexUsuario.php");
     echo "Usuario Modificado";
 ?>

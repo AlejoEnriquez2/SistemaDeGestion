@@ -51,23 +51,25 @@
                 }else if($admin == 0){
                     $sql = "SELECT * FROM correo WHERE cor_remitente = '$correo' AND cor_eliminado = 'N'";
                     $result = $conn->query($sql);
-                    $u = $result->fetch_assoc();
-                    $fecha = $u["cor_fecha"];
-                    $remitente = $u["cor_remitente"];
-                    $destinatario = $u["cor_destinatario"];
-                    $mensaje = $u['cor_mensaje'];
-                    $asunto = $u['cor_asunto'];
+                    if($result->num_rows > 0){
+                        while ($row = $result->fetch_assoc()){
+                            $fecha = $row["cor_fecha"];
+                            $remitente = $row["cor_remitente"];
+                            $destinatario = $row["cor_destinatario"];
+                            $mensaje = $row['cor_mensaje'];
+                            $asunto = $row['cor_asunto'];
 
-                    echo "<tr>";
-                    echo " <td>".$fecha."</td>";
-                    echo " <td>".$remitente."</td>";
-                    echo " <td>".$destinatario."</td>";
-                    echo " <td>".$asunto."</td>";
-                    echo "<td><a href='../../controladores/corAbrir.php?codigo=".$u["cor_codigo"]."'>Abrir</a></td>";
-                    echo "<td><a href='../../controladores/corEliminar.php?codigo=".$u["cor_codigo"]."'>Eliminar</a></td>";
-                    echo "<tr>";
-                
+                            echo "<tr>";
+                            echo " <td>".$row["cor_fecha"]."</td>";
+                            echo " <td>".$row["cor_remitente"]."</td>";
+                            echo " <td>".$row["cor_destinatario"]."</td>";
+                            echo " <td>".$row['cor_asunto']."</td>";
+                            echo "<td><a href='../../controladores/corAbrir.php?codigo=".$row["cor_codigo"]."'>Abrir</a></td>";
+                            echo "<td><a href='../../controladores/corEliminar.php?codigo=".$row["cor_codigo"]."'>Eliminar</a></td>";
+                            echo "<tr>";
+                        }
                     $conn->close();
+                    }
                 }
 
             ?>

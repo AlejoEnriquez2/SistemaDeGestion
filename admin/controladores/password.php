@@ -7,17 +7,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-	    <title>Eliminar</title>
+	    <title>Contraseña</title>
 		<meta charset="utf-8">
     </head>
     <body>
         <?php 
             include '../../config/conexionBD.php';
-            $codigo = $_GET['codigo'];
-            $sql = "SELECT usu_password FROM USUARIO WHERE usu_codigo = '$codigo'";
-            $result = $conn->query($sql);
-            $u = $result->fetch_assoc();
-            $contrasena = $u["usu_password"];
+            $codigo = $_SESSION['codigo'];
+            $sql1 = "SELECT * FROM usuario WHERE usu_codigo = $codigo AND usu_eliminado = 'N'";
+            $result1 = $conn->query($sql1);
+            $u1 = $result1->fetch_assoc();
+            $admin = $u1['usu_admin'];
+            if($admin == 1){    
+                $codigo = $_GET['codigo'];
+                $sql = "SELECT usu_password FROM USUARIO WHERE usu_codigo = '$codigo'";
+                $result = $conn->query($sql);
+                $u = $result->fetch_assoc();
+                $contrasena = $u["usu_password"];
+            }else if($admin ==0){
+                $codigo = $_SESSION['codigo'];
+                $sql = "SELECT usu_password FROM USUARIO WHERE usu_codigo = '$codigo'";
+                $result = $conn->query($sql);
+                $u = $result->fetch_assoc();
+                $contrasena = $u["usu_password"];
+            }
         ?>
         
         <form action='contrasena.php' method='POST'>

@@ -71,9 +71,9 @@
             <td><?php echo "$telefono" ?></td>
             <td><?php echo "$correo" ?></td>
             <td><?php echo "$nacimiento" ?></td>
-            <td><a href='../../controladores/eliminar.php?codigo=<?php echo "$codigo" ?>'>Eliminar</a></td>
-            <td><a href='../../controladores/editar.php?codigo=<?php echo "$codigo" ?>'>Editar</a></td>
-            <td><a href='../../controladores/password.php?codigo=<?php echo "$codigo" ?>'>Actualizar Contrasena</a></td>
+            <td><a href='../../controladores/eliminar.php'>Eliminar</a></td>
+            <td><a href='../../controladores/editar.php'>Editar</a></td>
+            <td><a href='../../controladores/password.php'>Actualizar Contrasena</a></td>
             <?php
                 if($cedula=='null'){
                     echo "<tr>";

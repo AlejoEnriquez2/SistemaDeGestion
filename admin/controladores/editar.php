@@ -15,21 +15,36 @@
         <?php
             include '../../config/conexionBD.php';
             //UPDATE `usuario` SET `usu_eliminado` = 'Y', `usu_fecha_modificacion` = NULL WHERE `usuario`.`usu_codigo` = 6;
-            $codigo = $_GET['codigo'];
-            if($codigo===FALSE){
-                $codigo = $_SESSION['codigo'];    
+            $codigo = $_SESSION['codigo'];
+            $sql1 = "SELECT * FROM usuario WHERE usu_codigo = $codigo AND usu_eliminado = 'N'";
+            $result1 = $conn->query($sql1);
+            $u1 = $result1->fetch_assoc();
+            $admin = $u1['usu_admin'];
+            if($admin == 1){
+                $codigo = $_GET['codigo'];
+                $sql = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
+                $result = $conn->query($sql);
+                $u = $result->fetch_assoc();
+                $cedula = $u["usu_cedula"];
+                $nombres = $u["usu_nombres"];
+                $apellidos = $u["usu_apellidos"];
+                $direccion = $u["usu_direccion"];
+                $telefono = $u["usu_telefono"];
+                $nacimiento = $u["usu_fecha_nacimiento"];
+            }else if($admin ==0){
+                $codigo = $_SESSION['codigo'];
+                $sql = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
+                $result = $conn->query($sql);
+                $u = $result->fetch_assoc();
+                $cedula = $u["usu_cedula"];
+                $nombres = $u["usu_nombres"];
+                $apellidos = $u["usu_apellidos"];
+                $direccion = $u["usu_direccion"];
+                $telefono = $u["usu_telefono"];
+                $nacimiento = $u["usu_fecha_nacimiento"];
             }
-            $sql = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
-            $result = $conn->query($sql);
-            $u = $result->fetch_assoc();
-            $cedula = $u["usu_cedula"];
-            $nombres = $u["usu_nombres"];
-            $apellidos = $u["usu_apellidos"];
-            $direccion = $u["usu_direccion"];
-            $telefono = $u["usu_telefono"];
-            $nacimiento = $u["usu_fecha_nacimiento"];
         ?>
-        <form action='edit.php?' method='POST' enctype="multipart/form-data">
+        <form action='edit.php' method='POST' enctype="multipart/form-data">
             <input type = 'hidden' name = 'codigo' value='<?php echo "$codigo" ?>'>
 
             <label for='cedula'><h3>Cedula</h3></label>
