@@ -2,6 +2,9 @@
     float: left; 
     width: 50%;
 }
+html {
+    color: red;
+}
 .col2 {
     float:left; 
     margin-right: 10px;
