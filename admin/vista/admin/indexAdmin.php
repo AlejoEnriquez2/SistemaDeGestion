@@ -3,6 +3,9 @@
     if(!isset($_SESSION['isLogged'])|| $_SESSION['isLogged'] === FALSE){
         header("Location: /SistemaDeGestion/public/vista/login.html");
     }
+    if(!isset($_SESSION['rol'])|| $_SESSION['rol'] == 0){
+        header("Location: /SistemaDeGestion/public/vista/login.html");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,12 +13,13 @@
 		<title>Usuarios</title>
         <meta charset="utf-8">
         <script type="text/javascript" src="../../controladores/ajax.js"></script>
+        <link rel="stylesheet" href="../styles/styles.css" type="text/css">
 	</head>
 	<body>
 		<header>
             <?php 
                 include '../../../config/conexionBD.php';
-                $codigo = $_GET['codigo'];
+                $codigo = $_SESSION['codigo'];
                 $datos = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
                 $result = $conn->query($datos);
                 $u = $result->fetch_assoc();
@@ -23,25 +27,22 @@
                 $apellidos = $u["usu_apellidos"];
                 $foto = $u["usu_imagen"];
             ?>
-            <div style="float: left; width: 50%">
-                <a href="indexAdmin.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; width: 50%;background-color: rgb(209, 209, 226);">Gestion de Usuarios</h2></a>
-                <a href="correo.php?codigo=<?php echo "$codigo" ?>"><h2 style="float:left; margin-left: 50px; width: 20%;background-color: rgb(209, 209, 226)">Correos</h2></a>
+            <div class="col1">
+                <a href="indexAdmin.php"><h2>Gestion de Usuarios</h2></a>
+                <a href="correo.php"><h2>Correos</h2></a>
             </div>
 
-            <div style="float:left; margin-right: 10px; width: 20%" >
+            <div class="col2">
                 <img width="50%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+            </div>
+
+            <div class="col3">
                 <h4><?php echo "$nombres" ?></h4>
                 <h4><?php echo "$apellidos" ?></h4>
             </div>
-
-            <div style="float:left; margin-left: 10px; width: 15%; margin-top: 30px">
-                <td><a href='../../controladores/eliminar.php?codigo=<?php echo "$codigo" ?>'>Eliminar</a></td><br>
-                <td><a href='../../controladores/editar.php?codigo=<?php echo "$codigo" ?>'>Editar</a></td><br>
-                <td><a href='../../controladores/password.php?codigo=<?php echo "$codigo" ?>'>Actualizar Contrasena</a></td><br>
-            </div>
             
         </header>	
-        <table style="width:100%">
+        <table class="tabla">
             <tr>
                 <th>Cedula</th>
                 <th>Nombres</th>
@@ -57,13 +58,11 @@
 
             <?php   
                 
-                $sql = "SELECT * FROM usuario";
+                $sql = "SELECT * FROM usuario WHERE usu_eliminado='N'";
                 $result = $conn->query($sql);
 
-            if ($result->num_rows > 0){    
-                
-                while ($row = $result->fetch_assoc()){
-                    if ($row["usu_eliminado"] === 'N'){    
+            if ($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()){  
                         echo "<tr>";
                         echo " <td>".$row["usu_cedula"]."</td>";
                         echo " <td>".$row["usu_nombres"]."</td>";
@@ -76,7 +75,6 @@
                         echo " <td><a href='../../controladores/editar.php?codigo=".$row["usu_codigo"]."'>Editar</a></td>";
                         echo " <td><a href='../../controladores/password.php?codigo=".$row["usu_codigo"]."'>Actualizar Contrasena</a></td>";
                         echo "</tr>";
-                    }    
                 }
             }else{
                 echo "<tr>";

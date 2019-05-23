@@ -66,7 +66,7 @@
             ?>
         </table>
         
-        <img width="25%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+        <img width="10%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
         <br>
         <br>
         <input type="text" id="cedula" value="">

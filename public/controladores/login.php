@@ -7,16 +7,17 @@
 	$sql = "SELECT * FROM usuario WHERE usu_correo = '$usuario' and usu_password = MD5('$contrasena')";
 	
 
-	 $result = $conn->query($sql);
+	$result = $conn->query($sql);
+	$u = $result->fetch_assoc();
  	if ($result->num_rows > 0) {
 		 $_SESSION['isLogged'] = TRUE;
-		 $u = $result->fetch_assoc();
+		 $_SESSION['codigo'] = $u["usu_codigo"];
+		 $_SESSION['rol'] = $u["usu_admin"];
 		 $admin = $u["usu_admin"];
-		 $codigo = $u["usu_codigo"];
 		 if($admin == 1){
-			header("Location: ../../admin/vista/admin/indexAdmin.php?codigo=".$codigo);
+			header("Location: ../../admin/vista/admin/indexAdmin.php");
 		 }else{
-			header("Location: ../../admin/vista/usuario/indexUsuario.php?codigo=".$codigo);
+			header("Location: ../../admin/vista/usuario/indexUsuario.php");
 		 }
  		
  	} else {
