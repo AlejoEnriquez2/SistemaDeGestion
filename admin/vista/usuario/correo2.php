@@ -31,9 +31,8 @@
             ?>
              <div class="col1">
                 <a href="indexUsuario.php"><h2>Gestion de Usuarios</h2></a>
-                <a href="correo2.php"><h2>Elementos Enviados</h2></a>
-                <a href="correo2.php"><h2>Bandeja de entrada</h2></a>
-                <a href="correo.php"><h2>Enviar Correo</h2></a>
+                <a href="correo2.php"><h2>Correos</h2></a>
+                
             </div>
 
             <div class="col2">
@@ -55,7 +54,7 @@
                 
             </tr>
             <?php
-            $correo = "SELECT * FROM correo WHERE cor_eliminado like'N' AND cor_remitente like '$correo'";
+            $correo = "SELECT * FROM correo WHERE cor_eliminado like'N' AND cor_remitente like '$correo' or cor_destinatario like '$correo'";
             $w = $conn->query($correo);
             
             if ($w->num_rows > 0){
@@ -79,11 +78,11 @@
         </table>
         <br>
         <br>
-        <input type="text" id="remitente" value="" placeholder="Remitente">
+        <input type="text" id="remitente" value="<?php echo "$correo"?>" placeholder="Remitente" hidden>
         <input type="button" id="buscar" name="buscar" value="Buscar Remitente" onclick="buscarPorRemitente()">
         <br>
         <br>
-        <input type="text" id="destinatario" value="" placeholder="Destinatario">
+        <input type="text" id="destinatario" value="<?php echo "$correo"?>" placeholder="Destinatario" hidden>
         <input type="button" id="buscar" name="buscar" value="Buscar Destinatario" onclick="buscarPorDestinatario()">
         <br>
         <br>

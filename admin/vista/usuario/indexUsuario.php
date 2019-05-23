@@ -33,7 +33,7 @@
                 $foto = $u["usu_imagen"];
             ?>
 
-            <h2>Gestion de Usuarios</h2>
+            
             <div class="col1">
                 <a href="indexUsuario.php"><h2>Gestion de Usuarios</h2></a>
                 <a href="correo2.php"><h2>Correos</h2></a>
