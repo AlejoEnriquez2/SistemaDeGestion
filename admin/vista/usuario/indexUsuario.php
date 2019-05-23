@@ -3,6 +3,9 @@
     if(!isset($_SESSION['isLogged'])|| $_SESSION['isLogged'] === FALSE){
         header("Location: /SistemaDeGestion/public/vista/login.html");
     }
+    if(!isset($_SESSION['rol'])|| $_SESSION['rol'] == 1){
+        header("Location: /SistemaDeGestion/public/vista/login.html");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,10 +13,40 @@
 		<title>Usuarios</title>
         <meta charset="utf-8">
         <script type="text/javascript" src="../../controladores/ajax.js"></script>
+        <link rel="stylesheet" href="../styles/styles.css" type="text/css">
 	</head>
 	<body>
 		<header>
-			<h2>Gestion de Usuarios</h2>
+            <?php   
+                include '../../../config/conexionBD.php';
+                $codigo = $_SESSION['codigo'];
+                $sql = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
+                $result = $conn->query($sql);
+                $u = $result->fetch_assoc();
+                $cedula = $u["usu_cedula"];
+                $nombres = $u["usu_nombres"];
+                $apellidos = $u["usu_apellidos"];
+                $direccion = $u["usu_direccion"];
+                $telefono = $u["usu_telefono"];
+                $correo = $u['usu_correo'];
+                $nacimiento = $u["usu_fecha_nacimiento"];
+                $foto = $u["usu_imagen"];
+            ?>
+
+            <h2>Gestion de Usuarios</h2>
+            <div class="col1">
+                <a href="indexUsuario.php"><h2>Gestion de Usuarios</h2></a>
+                <a href="correo2.php"><h2>Correos</h2></a>
+            </div>
+
+            <div class="col2">
+                <img width="50%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+            </div>
+
+            <div class="col3">
+                <h4><?php echo "$nombres" ?></h4>
+                <h4><?php echo "$apellidos" ?></h4>
+            </div>
         </header>	
         <table style="width:100%">
             <tr>
@@ -29,22 +62,7 @@
                 <th>Cambiar Contraseña</th>
             </tr>
 
-            <?php   
-                include '../../../config/conexionBD.php';
-                $codigo = $_GET['codigo'];
-                $sql = "SELECT * FROM usuario WHERE usuario.usu_codigo = '$codigo'";
-                $result = $conn->query($sql);
-                $u = $result->fetch_assoc();
-                echo "Ingresado '$codigo'";
-                $cedula = $u["usu_cedula"];
-                $nombres = $u["usu_nombres"];
-                $apellidos = $u["usu_apellidos"];
-                $direccion = $u["usu_direccion"];
-                $telefono = $u["usu_telefono"];
-                $correo = $u['usu_correo'];
-                $nacimiento = $u["usu_fecha_nacimiento"];
-                $foto = $u["usu_imagen"];
-            ?>
+            
 
             <td><?php echo "$cedula" ?></td>
             <td><?php echo "$nombres" ?></td>
@@ -66,16 +84,16 @@
             ?>
         </table>
         
-        <img width="10%" alt="<?php echo "$foto"?>" src='../../images/<?php echo "$foto"?>'>
+        
         <br>
         <br>
-        <input type="text" id="cedula" value="">
+        <!--<input type="text" id="cedula" value="">
         <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorCedula()">
         <br>
         <br>
         <div id="informacion"><b>Datos de la persona</b></div>
         <br>
-        <br>
+        <br>-->
     </body>
     <footer style='clear: both;'>
         <a href="../../controladores/salir.php">Salir</a>

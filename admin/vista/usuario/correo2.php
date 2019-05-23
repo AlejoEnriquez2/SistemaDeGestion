@@ -3,7 +3,7 @@
     if(!isset($_SESSION['isLogged'])|| $_SESSION['isLogged'] === FALSE){
         header("Location: /SistemaDeGestion/public/vista/login.html");
     }
-    if(!isset($_SESSION['rol'])|| $_SESSION['rol'] == 0){
+    if(!isset($_SESSION['rol'])|| $_SESSION['rol'] == 1){
         header("Location: /SistemaDeGestion/public/vista/login.html");
     }
 ?>
@@ -25,12 +25,15 @@
                 $u = $result->fetch_assoc();
                 $nombres = $u["usu_nombres"];
                 $apellidos = $u["usu_apellidos"];
+                $correo = $u["usu_correo"];
                 $foto = $u["usu_imagen"];
-
+    
             ?>
              <div class="col1">
-                <a href="indexAdmin.php"><h2>Gestion de Usuarios</h2></a>
-                <a href="correo.php"><h2>Correos</h2></a>
+                <a href="indexUsuario.php"><h2>Gestion de Usuarios</h2></a>
+                <a href="correo2.php"><h2>Elementos Enviados</h2></a>
+                <a href="correo2.php"><h2>Bandeja de entrada</h2></a>
+                <a href="correo.php"><h2>Enviar Correo</h2></a>
             </div>
 
             <div class="col2">
@@ -52,7 +55,7 @@
                 
             </tr>
             <?php
-            $correo = "SELECT * FROM correo WHERE cor_eliminado like'N'";
+            $correo = "SELECT * FROM correo WHERE cor_eliminado like'N' AND cor_remitente like '$correo'";
             $w = $conn->query($correo);
             
             if ($w->num_rows > 0){
